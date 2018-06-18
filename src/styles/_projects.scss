@@ -5,9 +5,13 @@
   width: 90%;
   max-width: 960px;
   margin: 0 auto;
+  background-color: white;
   @media only screen and (min-width: $cut) {
     width: 80%;
   }
+  @media (min-width: 1024px){
+	padding: 0 100px;
+	}
 }
 
 .user-projects {

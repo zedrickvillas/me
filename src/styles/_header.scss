@@ -7,10 +7,20 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  position: fixed;
+  top:0;
+  left: 0;
+  float: left;
+  z-index: -1;
   .particles-js-canvas-el {
     width:100% !important;
     height:100vh !important;
   }
+}
+
+#home {
+	width: 100%;
+	min-height: 100vh;
 }
 
 .header {
@@ -23,14 +33,21 @@
   margin: 0 auto;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  background-color: rgba(256,256,256,0.9);
+	box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.1);
+	padding: 30px 40px;
+	h1 {
+		padding-top:0;
+	}
   .site-title {
+	padding-top: 0;
     font-size: 50px;
     display: block;
     line-height: 1;
     color: #333;
     @media only screen and (min-width:$cut){
       margin: 0;
-      font-size: 100px;
+      font-size: 60px;
     }
   }
   .site-description {

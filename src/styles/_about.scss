@@ -2,9 +2,13 @@
   width: 90%;
   margin: 0 auto;
   max-width: 960px;
+  background-color: white;
   @media only screen and (min-width: $cut) {
     width: 80%;
   }
+  @media (min-width: 1024px) {
+	padding: 0 100px;
+	}
 }
 
 .tech {
