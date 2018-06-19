@@ -11,7 +11,7 @@
   top:0;
   left: 0;
   float: left;
-  z-index: -1;
+  z-index: 1;
   .particles-js-canvas-el {
     width:100% !important;
     height:100vh !important;
@@ -19,8 +19,10 @@
 }
 
 #home {
-	width: 100%;
+	width: 1px;
 	min-height: 100vh;
+	margin: auto;
+	overflow: visible;
 }
 
 .header {
@@ -39,7 +41,7 @@
 		padding-top:0;
 	}
   .site-title {
-	padding-top: 0;
+    padding-top: 0;
     font-size: 50px;
     display: block;
     line-height: 1;
@@ -47,6 +49,7 @@
     @media only screen and (min-width:$cut){
       margin: 0;
       font-size: 60px;
+      white-space:nowrap;
     }
   }
   .site-description {
