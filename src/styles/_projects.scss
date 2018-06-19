@@ -5,7 +5,7 @@
   width: 90%;
   max-width: 960px;
   margin: 0 auto;
-  background-color: white;
+  background-color: $background-content;
   @media only screen and (min-width: $cut) {
     width: 80%;
   }
