@@ -14,6 +14,16 @@ article, aside, figcaption, figure, footer, header, nav, section {
 	z-index: 2;
 }
 
+section {
+  div {
+    div {
+      @media only screen and (max-width: 640px) {
+        padding: 5px 25px;
+      }
+    }
+  }
+}
+
 .black {
   background-color: $main-contrast;
   canvas {
