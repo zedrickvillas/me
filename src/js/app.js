@@ -100,8 +100,8 @@ document.addEventListener("DOMContentLoaded", function () {
   			"speed": 3
 		  },
 		  "repulse": {
-  			"distance": 200,
-  			"duration": 5
+  			"distance": 150,
+  			"duration": 1
 		  },
 		  "push": {
 			     "particles_nb": 4
@@ -113,5 +113,37 @@ document.addEventListener("DOMContentLoaded", function () {
 	  },
 	  "retina_detect": true
   });
-
 }, false);
+
+function rgb2hex(rgb) {
+    rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    function hex(x) {
+      return ("0" + parseInt(x).toString(16)).slice(-2);
+    }
+    return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+}
+
+function toggleTheme() {
+  $('html').toggleClass('black');
+  setTimeout(function(){
+    var color = window.getComputedStyle(document.getElementsByClassName('site-title')[0]).getPropertyValue("color");
+    var arrayColor = color.split(",");
+    var hexColor = rgb2hex(color);
+    var r = arrayColor[0].match(/\d/g).join("");
+    var g = arrayColor[1].match(/\d/g).join("");
+    var b = arrayColor[2].match(/\d/g).join("");
+    var particles = pJSDom["0"].pJS.particles;
+    particles.color = hexColor;
+
+    particles.array["0"].color.rgb.r = r
+    particles.array["0"].color.rgb.g = g
+    particles.array["0"].color.rgb.b = b
+    particles.line_linked.color = hexColor;
+    particles.line_linked.color_rgb_line.r = r;
+    particles.line_linked.color_rgb_line.g = g;
+    particles.line_linked.color_rgb_line.b = b;
+
+    pJSDom["0"].pJS.particles = particles;
+  }, 2000);
+
+}

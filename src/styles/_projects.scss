@@ -6,7 +6,7 @@
   max-width: 960px;
   margin: 0 auto;
   background-color: $background-content;
-  
+
   @media only screen and (min-width: $cut) {
     width: 80%;
   }
@@ -26,7 +26,7 @@
     margin: 0;
   }
   li {
-    color: $main;
+    color: $main-contrast;
     font-size: 1.1rem;
   }
   p {

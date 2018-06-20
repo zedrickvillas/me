@@ -9,16 +9,41 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 article, aside, figcaption, figure, footer, header, nav, section {
-    display: block;
+  display: block;
 	position: relative;
 	z-index: 2;
 }
-h1, h2, h3, h4, stong {
+
+.black {
+  background-color: $main-contrast;
+  canvas {
+    background-color: $main-contrast;
+  }
+  p, span, h1, h2, h3, h4, span, a, li, i {
+      color: $main !important;
+  }
+  .header-icons i {
+    border: 2px solid $main !important;
+  }
+  .header, section, footer {
+    background-color: $background-content-new !important;
+  }
+}
+
+h1, h2, h3, h4, strong {
     margin-top: 1em;
     padding-top: 1em;
     line-height: 1.25;
-    color: #333;
+    color: $main-contrast;
 }
+
+body * {
+  -webkit-transition: all 2s linear;
+  -moz-transition: all 2s linear;
+  -o-transition: all 2s linear;
+  transition: all 2s linear;
+}
+
 h1 {
     font-size: 2.5rem;
 }

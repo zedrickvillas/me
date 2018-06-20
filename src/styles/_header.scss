@@ -19,7 +19,7 @@
 }
 
 #home {
-	width: 1px;
+	width: 0px;
 	min-height: 100vh;
 	margin: auto;
 	overflow: visible;
@@ -91,7 +91,6 @@
     margin: 5px;
     border-radius: 50%;
     border: 2px solid #333;
-    transition: all .7s;
     &:hover {
       color: $main;
       background: #333;
