@@ -129,6 +129,8 @@ function rgb2hex(rgb) {
 
 function toggleTheme() {
   $('html').toggleClass('black');
+  $('.fa-moon-o, .fa-sun-o').toggleClass('fa-sun-o').toggleClass('fa-moon-o');
+
   setTimeout(function(){
     var color = window.getComputedStyle(document.getElementsByClassName('site-title')[0]).getPropertyValue("color");
     var arrayColor = color.split(",");
