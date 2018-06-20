@@ -2,6 +2,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   const sweetScroll = new SweetScroll({/* some options */});
 
+  document.getElementById('change-theme').addEventListener("click", function(e) {
+    toggleTheme();
+  }, false);;
+
   /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
   particlesJS('particles-js', {
 	  "particles": {
@@ -144,6 +148,5 @@ function toggleTheme() {
     particles.line_linked.color_rgb_line.b = b;
 
     pJSDom["0"].pJS.particles = particles;
-  }, 2000);
-
-}
+  }, 800);
+};
