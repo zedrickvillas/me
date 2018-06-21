@@ -61,6 +61,14 @@ section {
   }
 }
 
+.full-opacity {
+  opacity: 1 !important;
+}
+
+section {
+  opacity: 0;
+}
+
 h1, h2, h3, h4, strong {
     margin-top: 1em;
     padding-top: 1em;
@@ -69,10 +77,10 @@ h1, h2, h3, h4, strong {
 }
 
 body * {
-  -webkit-transition: color 2s, background 2s;
-  -moz-transition: color 2s, background 2s;
-  -o-transition: color 2s, background 2s;
-  transition: color 2s, background 2s;
+  -webkit-transition: color 2s, background 2s, opacity 2s;
+  -moz-transition: color 2s, background 2s, opacity 2s;
+  -o-transition: color 2s, background 2s, opacity 2s;
+  transition: color 2s, background 2s, opacity 2s;
 }
 
 h1 {

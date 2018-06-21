@@ -117,6 +117,13 @@ document.addEventListener("DOMContentLoaded", function () {
 	  },
 	  "retina_detect": true
   });
+
+  setTimeout(function(){
+    $('.particles-js-canvas-el').toggleClass('full-opacity');
+    setTimeout(function(){
+      $('section').toggleClass('full-opacity');
+    },1000);
+  },1000);
 }, false);
 
 function rgb2hex(rgb) {
