@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setTimeout(function(){
       $('section').toggleClass('full-opacity');
-    },1000);
+    },500);
 }, false);
 
 function rgb2hex(rgb) {
