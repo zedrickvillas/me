@@ -5,6 +5,18 @@
 
   <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-
+  <meta name="keywords" content="Zedrick John Villas, Zedrick John, Web Developer, Drupal, Software Engineer, Wordpress"/>
+  <meta name="subject" content="Zedrick John's Portfolio">
+  <meta name="language" content="ES">
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Zedrick John Villas, zedrickvillas@gmail.com">
+  <meta name="designer" content="Zedrick John Villas">
+  <meta name="owner" content="Zedrick John Villas">
+  <!-- Open Graph Meta -->
+  <meta name="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"/>
+  <meta name="og:type" content="website"/>
+  <meta name="og:image" content="{{ "/assets/img/portfolio.png" | prepend: site.baseurl }}"/>
+  <meta name="og:site_name" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"/>
+  <meta name="og:description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"/>
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}">
 </head>
