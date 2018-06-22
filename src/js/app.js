@@ -1,5 +1,10 @@
 /* sweetScroll load */
 document.addEventListener("DOMContentLoaded", function () {
+  AOS.init({
+      duration: 400,
+      once: true,
+    });
+
   const sweetScroll = new SweetScroll({/* some options */});
 
   document.getElementById('change-theme').addEventListener("click", function(e) {
@@ -118,9 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	  "retina_detect": true
   });
 
-    setTimeout(function(){
-      $('section').toggleClass('full-opacity');
-    },500);
+
 }, false);
 
 function rgb2hex(rgb) {
