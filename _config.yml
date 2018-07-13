@@ -15,6 +15,6 @@ facebook_username: zjvillas
 
 # Google-analytics
 google-analytics:
-  id: ""
+  id: "UA-122300369-1"
 
 exclude: ['package.json', 'src' , 'node_modules']
