@@ -46,7 +46,7 @@
     display: block;
     line-height: 1;
     color: #333;
-    @media only screen and (min-width:$cut){
+    @media only screen and (orientation : landscape){
       margin: 0;
       font-size: 60px;
       white-space:nowrap;
