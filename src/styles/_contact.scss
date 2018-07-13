@@ -1,0 +1,35 @@
+#contact {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 960px;
+  background-color: $background-content;
+  @media only screen and (min-width: $cut) {
+    width: 80%;
+  }
+  @media (min-width: 1024px) {
+	   padding: 0 100px;
+	}
+  h3 {
+    margin: auto;
+    text-indent: 25px;
+  }
+  .contact-form-container {
+    input[type='text'],
+    input[type='email'],
+    textarea,
+    button[type='submit'] {
+      padding: 15px;
+      width: 50%;
+      min-width: 230px;
+      display: block;
+      margin: 10px auto;
+      border: 1px solid gray;
+      color: #555;
+    }
+    button[type='submit'] {
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  }
+
+}
