@@ -1,6 +1,7 @@
 /* sweetScroll load */
 document.addEventListener("DOMContentLoaded", function () {
   AOS.init({
+      disable: 'phone',
       duration: 400,
       once: true,
     });
