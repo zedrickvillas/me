@@ -160,3 +160,13 @@ function toggleTheme() {
     pJSDom["0"].pJS.particles = particles;
   }, 800);
 };
+
+window.onscroll = function (e) {
+  console.log( $('#change-theme').offset().top );
+  if($('#change-theme').offset().top > 300) {
+    console.log('small');
+    $('#change-theme').addClass('smallbtn');
+  } else {
+    $('#change-theme').removeClass('smallbtn');
+  }
+}
