@@ -1,12 +1,12 @@
 # Site settings
 title: Zedrick John Villas
-description: My public portfolio containing a brief description of my experience in the IT industry, the technologies that i have used, and the projects that i have done.
+description: My public portfolio containing a brief description of my experience in the IT industry, the technologies that i have used, and projects delivered.
 # baseurl: "/particle" # the subpath of your site, e.g. /blog
 # url: "localhost:3000" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
 
 # User settings
 username: Zedrick John Villas
-user_description: I have 6 years of experience in web development. I have been a front-end developer who converts design submitted by the client into a responsive web page using the most appropriate technology for the design, and a back-end developer who converts business requirements into working system functions or features using the most efficient and effective tools to meet the established requirements. I am an achiever and goal-oriented person who is keen to details and would like to keep everything in a systematic manner.
+user_description: An outstanding IT Professional who have been in the IT industry for 6 years, with experience in the digital banking, enterprise architecture, e-commerce, and web & mobile development. Managed multiple agile teams who delivered quality products accompanied by precise and transparent reports.
 user_title: IT Professional
 email: zedrickvillas@gmail.com
 twitter_username: zedrickvillas
