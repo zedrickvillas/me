@@ -20,28 +20,31 @@ gulp.task('jekyll-build', function (done) {
 });
 
 /*
- * Rebuild Jekyll & reload browserSync
+ * Build the Jekyll Site
+ * runs a child process in node that runs the jekyll commands
  */
-gulp.task('jekyll-rebuild', function () {
+gulp.task('jekyll-rebuild', gulp.series('jekyll-build' ,function(done) {
 	browserSync.reload();
-});
+	done();
+}));
 
 /*
  * Build the jekyll site and launch browser-sync
  */
-gulp.task('browser-sync', gulp.series('jekyll-build', function() {
-	browserSync({
+gulp.task('browser-sync', gulp.series( function() {
+	return browserSync.init({
 		server: {
-			baseDir: '_site'
+			baseDir: '_site',
 		}
 	});
 }));
+
 
 /*
 * Compile and minify sass
 */
 gulp.task('sass', function() {
-  gulp.src('src/styles/**/*.scss')
+  return gulp.src('src/styles/**/*.scss')
     .pipe(plumber())
     .pipe(sass())
     .pipe(csso())
@@ -52,7 +55,7 @@ gulp.task('sass', function() {
 * Compile fonts
 */
 gulp.task('fonts', function() {
-	gulp.src('src/fonts/**/*.{ttf,woff,woff2}')
+	return gulp.src('src/fonts/**/*.{ttf,woff,woff2}')
 	.pipe(plumber())
 	.pipe(gulp.dest('assets/fonts/'));
 })
@@ -79,11 +82,11 @@ gulp.task('js', function(){
 });
 
 gulp.task('watch', function() {
-  gulp.watch('src/styles/**/*.scss', gulp.series('sass', 'jekyll-rebuild'));
-  gulp.watch('src/js/**/*.js', gulp.series('js', 'jekyll-rebuild'));
-  gulp.watch('src/fonts/**/*.{tff,woff,woff2}', gulp.series('fonts'));
-  gulp.watch('src/img/**/*.{jpg,png,gif}', gulp.series('imagemin'));
-  gulp.watch(['*html', '_includes/*html', '_layouts/*.html'], gulp.series('jekyll-build', 'jekyll-rebuild'));
+  gulp.watch('src/styles/**/*.scss', gulp.series('sass','jekyll-rebuild'));
+  gulp.watch('src/js/**/*.js', gulp.series('js','jekyll-rebuild'));
+  gulp.watch('src/fonts/**/*.{tff,woff,woff2}', gulp.series('fonts','jekyll-rebuild'));
+  gulp.watch('src/img/**/*.{jpg,png,gif}', gulp.series('imagemin','jekyll-rebuild'));
+  gulp.watch(['*.html', '_includes/*.html', '_layouts/*.html'], gulp.series('jekyll-rebuild'));
 });
 
 gulp.task('default', gulp.parallel('js', 'sass','imagemin', 'fonts', 'browser-sync', 'watch'));
