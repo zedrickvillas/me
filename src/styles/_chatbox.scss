@@ -1,0 +1,180 @@
+
+.overflow-hidden {
+    overflow: hidden;    
+}
+
+.chatbot-container {
+        position: sticky;
+        bottom: 0;
+        right: 0;
+        z-index: 2;
+        display: block;
+        margin: 10px;
+        height: 0px;
+
+        @media only screen and (min-width: $cut) {
+            width: 500px;
+            float: right;
+        }
+
+
+    .chatbox.larger {
+        top: -410px;
+    }
+
+    .chatbox.overflow-hidden {
+        top: 0;
+    }
+
+    .chatbox {
+        padding: 10px;
+        position: relative;
+        display: block;
+        z-index: 1000;
+        overflow: hidden;
+        background: #dcd2d27a;
+        border-radius: 5px;
+        top: -310px;
+        transition: top .5s ease;
+
+        .control-display {
+            margin-top: -5px;
+            margin-bottom: 5px;
+        }
+
+        .control-display button {
+            background: #eeeaea;
+            font-size: 20px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .control-display {
+            .close{
+                float: right;
+            }
+            .minimize {
+            display: none;
+            }
+        }
+
+
+        .message-container {
+            height: 200px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            overflow: scroll;
+            -webkit-transition: all .5s ease;
+            -moz-transition: all .5s ease;
+            transition: all .5s ease;
+        }
+
+        .message-container.larger {
+            height: 300px;
+        }
+        
+        .user-message, .bot-message {
+            position: relative;
+            display: block;
+            clear: both;
+            font-size: 14px;
+            line-height: 18px;
+            padding: 5px;
+            border-radius: 5px;
+            max-width: 175px;
+            margin-bottom: 5px;
+            word-break: break-word;
+        }
+
+        .user-message {
+            float: right;
+            text-align: right;
+            color: white;
+            background: #a797ff;
+        }
+
+        .bot-message {
+            float: left;
+            text-align: left;
+            color: #262626;
+            background: #f1f0f0;
+        }
+
+        .input-container {
+            display: block;
+            position: relative;
+        }
+
+        #send-chat-message {
+            -webkit-appearance: button;
+            font-weight: 700;
+            margin-left: 5px;
+            font-size: 14px;
+            height: 30px;
+            float: right;
+            position: absolute;
+            background: white;
+            z-index: 111;
+            top: 0;
+            right: 0;
+            border: 0;
+        }
+
+        #text-chat {
+            background: #fff;
+            font-size: 14px;
+            height: 30px;
+            font-family: inherit;
+            border: 0;
+            border-radius: 3px;
+            width: calc(100% - 35px);
+            padding-right: 35px;
+            text-indent: 15px;
+        }
+
+
+        .one {
+            opacity: 0;
+            -webkit-animation: dot 1.3s infinite;
+            -webkit-animation-delay: 0.0s;
+            animation: dot 1.3s infinite;
+            animation-delay: 0.0s;
+        }
+
+        .two {
+            opacity: 0;
+            -webkit-animation: dot 1.3s infinite;
+            -webkit-animation-delay: 0.2s;
+              animation: dot 1.3s infinite;
+              animation-delay: 0.2s;
+        }
+
+        .three {
+            opacity: 0;
+            -webkit-animation: dot 1.3s infinite;
+            -webkit-animation-delay: 0.3s;
+             animation: dot 1.3s infinite;
+             animation-delay: 0.3s;
+        }
+
+        @-webkit-keyframes dot {
+              0% { opacity: 0; }
+             50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes dot {
+              0% { opacity: 0; }
+             50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .bot-message .loading {
+            font-weight: bold;
+        }
+    }
+	
+}

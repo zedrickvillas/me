@@ -7,6 +7,7 @@ var plumber = require('gulp-plumber');
 var cp = require('child_process');
 var imagemin = require('gulp-imagemin');
 var browserSync = require('browser-sync');
+var terser = require('gulp-terser');
 
 var jekyllCommand = (/^win/.test(process.platform)) ? 'jekyll.bat' : 'jekyll';
 
@@ -77,7 +78,7 @@ gulp.task('js', function(){
 	return gulp.src('src/js/**/*.js')
 		.pipe(plumber())
 		.pipe(concat('main.js'))
-		.pipe(uglify())
+		.pipe(terser())
 		.pipe(gulp.dest('assets/js/'))
 });
 

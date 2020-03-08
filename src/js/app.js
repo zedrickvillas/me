@@ -10,7 +10,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.getElementById('change-theme').addEventListener("click", function(e) {
     toggleTheme();
-  }, false);;
+  }, false);
+
+  if(document.body.contains(document.getElementById('zim-chatbot'))){
+		document.getElementById('send-chat-message').addEventListener("click", function(e) {
+			var msg = document.getElementById('text-chat').value;
+			addMessage("user", msg );
+			sendChatMessage(msg);
+		}, false);;
+
+		document.getElementById("text-chat")
+		    .addEventListener("keyup", function(event) {
+		    event.preventDefault();
+		    if (event.keyCode === 13) {
+		        document.getElementById("send-chat-message").click();
+		        emptyChatTextField();
+		    }
+		});
+
+	    document.getElementById("expand-chat").addEventListener("click", function(e) {
+		    resizeChat();
+		});
+
+	    document.getElementById("minimize-chat").addEventListener("click", function(e) {
+		    resizeChat();
+		});
+
+	    document.getElementById("close-chat").addEventListener("click", function(e) {
+		    closeChat();
+		});
+
+	}
 
   /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
   particlesJS('particles-js', {
@@ -168,3 +198,100 @@ window.onscroll = function (e) {
     $('#change-theme').removeClass('smallbtn');
   }
 }
+
+
+var response;
+var json;
+
+function sendChatMessage(message) {
+	let data = {
+        'message': message,
+    };
+    emptyChatTextField();
+    
+    setTimeout(function(){
+    	showLoading();	
+	},300);
+
+    fetch('http://127.0.0.1:8080/DetectIntent.php',{
+        method: 'POST',
+        headers: {
+    		'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(function(json) {
+    	removeLoading();
+    	var timer = 0;
+    	console.log(json);
+    	$.each(json.fulfillmentMessages, function(item,key){
+    		setTimeout(function(){
+    			if (typeof key.text != "undefined") {
+    				addMessage("bot",key.text.text[0]);	
+    			}
+    		}, timer);
+    		timer = timer + key.text.text[0].length * 30;
+    		
+    	})
+    });
+}
+
+
+function addMessage(from,message) {
+	var messageContainer = $('.message-container');
+
+	$(document.createElement('span'))
+		.addClass(from + '-message')
+		.text(message)
+		.appendTo(messageContainer);
+
+	scrollMessageContainer()
+}
+
+function emptyChatTextField(){
+	document.getElementById("text-chat").value = "";
+}
+
+function showLoading(){
+	var messageContainer = $('.message-container');
+
+	$(document.createElement('span'))
+		.addClass('bot-message loading')
+		.html('<span class="one">. </span><span class="two">. </span><span class="three">. </span>')
+		.appendTo(messageContainer);
+
+	scrollMessageContainer()
+}
+
+function removeLoading(){
+	$('.bot-message.loading').remove();
+}
+
+function scrollMessageContainer() {
+	var messageContainer = $('.message-container'),
+		containerHeight = messageContainer.prop('scrollHeight');
+
+	messageContainer.scrollTop(containerHeight);
+}
+
+function resizeChat() {
+	$('.message-container').toggleClass('larger');
+	$('.chatbox').toggleClass('larger');
+	if($('.message-container').hasClass('larger')) {
+		$('#expand-chat').hide();
+		$('#minimize-chat').show();
+	} else {
+		$('#minimize-chat').hide();
+		$('#expand-chat').show();	
+	}
+}
+
+function closeChat() {
+	$('.chatbox').toggleClass('overflow-hidden')
+	setTimeout(function(){
+		$('.chatbot-container').delay(1000).toggleClass('overflow-hidden');	
+	}, 1000);
+	
+}
+
