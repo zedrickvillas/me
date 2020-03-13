@@ -1,3 +1,6 @@
+
+const botServer = 'http://165.22.101.33/chatbot-server/DetectIntent.php';
+//const botServer = 'http://127.0.0.1:8080/DetectIntent.php';
 /* sweetScroll load */
 document.addEventListener("DOMContentLoaded", function () {
   AOS.init({
@@ -13,16 +16,22 @@ document.addEventListener("DOMContentLoaded", function () {
   }, false);
 
   if(document.body.contains(document.getElementById('zim-chatbot'))){
+  		document.getElementById('zim-icon').addEventListener("click", function(e) {
+			showChat();
+		}, false);;
+
 		document.getElementById('send-chat-message').addEventListener("click", function(e) {
-			var msg = document.getElementById('text-chat').value;
-			addMessage("user", msg );
-			sendChatMessage(msg);
+			if (document.getElementById("text-chat").value.trim()!= '') {
+				var msg = document.getElementById('text-chat').value;
+				addMessage("user", msg );
+				sendChatMessage(msg);
+			}
 		}, false);;
 
 		document.getElementById("text-chat")
 		    .addEventListener("keyup", function(event) {
 		    event.preventDefault();
-		    if (event.keyCode === 13) {
+		    if (event.keyCode === 13 && document.getElementById("text-chat").value.trim()!= '') {
 		        document.getElementById("send-chat-message").click();
 		        emptyChatTextField();
 		    }
@@ -213,7 +222,7 @@ function sendChatMessage(message) {
     	showLoading();	
 	},300);
 
-    fetch('http://127.0.0.1:8080/DetectIntent.php',{
+    fetch(botServer,{
         method: 'POST',
         headers: {
     		'Content-Type': 'application/json'
@@ -288,10 +297,18 @@ function resizeChat() {
 }
 
 function closeChat() {
+	$('#zim-icon').removeClass('hidden');
 	$('.chatbox').toggleClass('overflow-hidden')
 	setTimeout(function(){
 		$('.chatbot-container').delay(1000).toggleClass('overflow-hidden');	
 	}, 1000);
+	
+}
+
+function showChat() {
+	$('#zim-icon').addClass('hidden');
+	$('.chatbox').toggleClass('overflow-hidden')
+	$('.chatbot-container').toggleClass('overflow-hidden');	
 	
 }
 
