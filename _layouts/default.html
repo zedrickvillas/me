@@ -2,51 +2,49 @@
 <html lang="en">
   {% include head.html %}
   <body>
+    <!-- Load Facebook SDK for JavaScript -->
+    <!--
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml: true,
+          version: "v5.0"
+        });
+      };
 
-<!-- Load Facebook SDK for JavaScript -->
-
-      <div id="fb-root"></div>
-      <script>
-        window.fbAsyncInit = function() {
-          FB.init({
-            xfbml            : true,
-            version          : 'v5.0'
-          });
-        };
-
-        (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
+      (function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
         fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));</script>
+      })(document, "script", "facebook-jssdk");
+    </script>
 
-   
-      <div class="fb-customerchat"
-        attribution=setup_tool
-        page_id="107118100794641"
-        theme_color="#000000"
-        logged_in_greeting="Hi!"
-        logged_out_greeting="Hi!">
-      </div>
-      
-    {% include change-theme.html %}
-	{% include background.html %}
-      {% include header.html %}
-      <section id="about">
-        {% include about.html %}
-      </section>
-      <section id="projects">
-        {% include projects.html %}
-      </section>
-      <section id="contact">
-        {% include contact.html %}
-      </section>
-        {{ content }}
-      {% include footer.html %}
-      
-      <!-- {% include chatbox.html %} -->
-      
+    <div
+      class="fb-customerchat"
+      attribution="setup_tool"
+      page_id="107118100794641"
+      theme_color="#000000"
+      logged_in_greeting="Hi!"
+      logged_out_greeting="Hi!"
+    ></div>
+-->
+    {% include change-theme.html %} {% include background.html %} {% include
+    header.html %}
+    <section id="about">
+      {% include about.html %}
+    </section>
+    <section id="projects">
+      {% include projects.html %}
+    </section>
+    <section id="contact">
+      {% include contact.html %}
+    </section>
+    {{ content }} {% include footer.html %} {% include chatbox.html %}
   </body>
-{% include google-analytics.html %}
+  {% include google-analytics.html %}
+</html>
