@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head-model.html %}
+  <style>
+body {
+      margin: 0;
+      overflow-y: auto; /* Enable vertical scrollbar */
+    }
+    #model-container {
+      width: 100vw;
+      height: 200vh; /* Increase height to enable scrolling */
+      overflow: hidden; /* Hide overflow to avoid showing scrollbars */
+      position: relative;
+    }
+    canvas {
+      position: fixed; /* Position canvas fixed for Three.js scene */
+      top: 0;
+      left: 0;
+    }
+  </style>
+  <body>
+    
+    <!-- Example: inside your HTML file -->
+ <div id="model-container">
+    <!-- Content to make page scrollable -->
+    <!-- You can adjust the height of this div to control the scrollable area -->
+    <!-- Ensure to set enough height to enable scrolling based on your content -->
+    <div style="height: 300vh;">&nbsp;</div>
+  </div>
+
+
+
+  </body>
+  {% include google-analytics.html %}
+  <script>
+var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    var renderer = new THREE.WebGLRenderer({ antialias: true });
+    var animationClip, setFrame;
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('model-container').appendChild(renderer.domElement);
+
+    var model, mixer;
+    var clock = new THREE.Clock();
+
+    function loadModel() {
+      var loader = new THREE.GLTFLoader();
+      var modelPath = "{{ '/assets/models/robot_playground.glb' | prepend: site.baseurl }}";
+
+
+      loader.load(modelPath, function(gltf) {
+        model = gltf.scene;
+        scene.add(model);
+
+        // Set up animation mixer if there are animations
+        if (gltf.animations.length > 0) {
+          mixer = new THREE.AnimationMixer(model);
+          animationClip = gltf.animations[0]; // Assuming we want to use the first animation clip
+          var action = mixer.clipAction(animationClip);
+          action.play(); // Start playing the animation
+        }
+
+        camera.position.set(0, 1, 3);
+        camera.lookAt(model.position);
+
+        animate();
+      }, undefined, function(error) {
+        console.error('An error happened', error);
+      });
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      // Calculate delta time
+      var delta = clock.getDelta();
+
+      // Update the animation mixer if it exists
+      if (mixer) {
+        mixer.update(delta);
+      }
+
+      // Render the scene
+      renderer.render(scene, camera);
+    }
+
+
+    function onScroll() {
+      clearInterval(setFrame);
+      var currentScrollPosition = window.scrollY;
+      var scrollPercentage = currentScrollPosition / (document.documentElement.scrollHeight - window.innerHeight);
+      var animationTime = scrollPercentage * animationClip.duration;
+
+      console.log(currentScrollPosition);
+      console.log(mixer);
+      setFrame = setInterval(function(){
+              mixer.setTime(animationTime);
+      },1);
+
+
+
+    }
+    // Listen for scroll events
+    window.addEventListener('scroll', onScroll);
+
+
+    loadModel();
+
+  console.log("done");
+</script>
+</html>
