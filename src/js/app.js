@@ -5,6 +5,11 @@ const botServer =
 document.addEventListener(
   "DOMContentLoaded",
   function() {
+
+    $(".avatar-wrapper").on("click",function(){
+      $(".avatar-wrapper").toggleClass("select-pm").toggleClass("select-developer");
+    })
+
     AOS.init({
       disable: "phone",
       duration: 400,
@@ -187,6 +192,8 @@ document.addEventListener(
       },
       retina_detect: true
     });
+
+
   },
   false
 );
@@ -333,3 +340,4 @@ function showChat() {
   $(".chatbox").toggleClass("overflow-hidden");
   $(".chatbot-container").toggleClass("overflow-hidden");
 }
+

@@ -18,12 +18,52 @@
   }
 }
 
-#avatar-icon {
+.avatar-wrapper {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  margin: auto;
+  transition: transform 1s;
+}
+
+.avatar-wrapper:hover {
+  transform: rotateY(-30deg);
+}
+
+
+.avatar-wrapper.select-developer {
+  #avatar-dev {
+    transform: rotateY(0deg);
+  }
+  #avatar-pm {
+    transform: rotateY(180deg);
+  }
+}
+
+.avatar-wrapper.select-pm {
+  #avatar-dev {
+    transform: rotateY(180deg);
+  }
+  #avatar-pm {
+    transform: rotateY(0deg);
+  }
+}
+
+
+.avatar-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 150px;
-  background: white;
+  background: #fff;
   border-radius: 150px;
   padding: 5px;
   border: 10px solid #333;
+  transition: transform 1s;
+  backface-visibility: hidden;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 1) 0px 1px 15px 1px;
+  backface-visibility: hidden;
 }
 
 #home {
