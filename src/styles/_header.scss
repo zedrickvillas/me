@@ -18,6 +18,14 @@
   }
 }
 
+#avatar-icon {
+  width: 150px;
+  background: white;
+  border-radius: 150px;
+  padding: 5px;
+  border: 10px solid #333;
+}
+
 #home {
 	width: 0px;
 	min-height: 100vh;
@@ -39,6 +47,7 @@
 	padding: 30px 40px;
 	h1 {
 		padding-top:0;
+    margin-top: 10px;
 	}
   .site-title {
     padding-top: 0;
